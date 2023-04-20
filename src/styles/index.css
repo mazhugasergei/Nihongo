@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.btn {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  text-decoration: none;
+  display: inline-block;
+  background: none;
+  color: #000;
+  font-size: 0.8335rem;
+  border: none;
+  box-shadow: inset 0 0 0 0.0625rem #000;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1.5rem;
+}
+.btn.black {
+  background: #000;
+  color: #fff;
+}
+
+main form {
+  border: 1px solid #000;
+  max-width: 35rem;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  margin: 0 auto;
+}
+main form .topbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+main form .topbar .progress-cont {
+  height: 0.0625rem;
+  width: 100%;
+  background: #cccccc;
+}
+main form .topbar .progress-cont .progress {
+  height: 100%;
+  background: #000;
+}
+main form .topbar .controls input[type=checkbox] {
+  display: none;
+}
+main form .topbar .controls label {
+  cursor: pointer;
+}
+main form .question {
+  padding-top: 0.5rem;
+}
+main form .question input[type=text] {
+  text-align: center;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 0.0625rem solid #000;
+}
+main form .question input[type=text].l-2 {
+  width: 2rem;
+}
+main form .question input[type=text]:focus {
+  outline: none;
+}
+main form .results {
+  text-align: center;
+  display: flex;
+  flex-flow: column;
+  gap: 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+main form nav.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.furigana {
+  position: relative;
+  display: inline-flex;
+  flex-flow: column-reverse;
+  align-items: center;
+}
+.furigana span {
+  position: absolute;
+  top: -0.5rem;
+  white-space: nowrap;
+  font-size: 0.5rem;
+}/*# sourceMappingURL=index.css.map */
