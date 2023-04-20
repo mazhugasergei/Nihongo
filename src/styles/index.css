@@ -29,7 +29,6 @@ body {
 }
 
 main form {
-  border: 1px solid #000;
   max-width: 35rem;
   display: flex;
   flex-flow: column;

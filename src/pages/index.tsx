@@ -15,7 +15,6 @@ export default () => {
     furiganaCharacters.forEach((item) => {
       item.style.display = e.target.checked ? "unset" : "none"
     })
-    if(e.target.checked){}
   }
 
   const inputChange = (e: any) => {
