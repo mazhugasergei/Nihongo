@@ -63,7 +63,8 @@ export default () => {
         <div className="question">
           <div className="furigana">私<span>わたし</span></div>
           <input type="text" className="l-2" maxLength={2} data-index={0} onChange={inputChange} />
-          <div className="furigana">松田樹<span>まつだいつき</span></div>
+          <div className="furigana">松田<span>まつだ</span></div>
+          <div className="furigana">樹<span>いつき</span></div>
           です。
         </div>
         <div className="question">
