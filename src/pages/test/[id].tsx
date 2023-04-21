@@ -1,5 +1,7 @@
 // react
 import { useEffect, useState } from "react"
+// next
+import Link from "next/link"
 // zustand
 import useSettings from "@/store/useSettings"
 
@@ -114,7 +116,7 @@ export default ({ questions, answers }: ComponentProps) => {
             </nav>
           :
             <nav>
-              <a href="/" className="btn black">Home</a>
+              <Link href="/" className="btn black">Home</Link>
             </nav>
         }
 
