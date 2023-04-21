@@ -71,7 +71,7 @@ export default ({ questions, answers }: ComponentProps) => {
         {/* Topbar with Progress and FuriganaToggler */}
         <div className="topbar">
           <div className="progress-cont"><div className="progress" style={{ width: `${currentQuestionNum * 100 / answers.length}%` }} /></div>
-          <div tabIndex={0} onClick={furiganaToggle} style={{ cursor: "pointer", pointerEvents: "none" }}><div className="furigana">あ<span>あ</span></div></div>
+          <div tabIndex={0} onClick={furiganaToggle} style={{ cursor: "pointer", userSelect: "none" }}><div className="furigana">あ<span>あ</span></div></div>
         </div>
 
         {/* Questions */}
