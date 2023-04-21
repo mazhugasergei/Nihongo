@@ -36,12 +36,8 @@ export default () => {
 
   const submitForm = (e: any) => {
     e.preventDefault()
-    if(currentQuestionNum !== answers.length){
-      e.target.querySelectorAll("input[type=text]")[currentQuestionNum].focus()
-    }
-    else{
-      console.log("submitted") // submit form
-    }
+    if(currentQuestionNum !== answers.length) e.target.querySelectorAll("input[type=text]")[currentQuestionNum].focus()
+    else console.log("submitted") // submit form
   }
 
   useEffect(()=>{
@@ -54,11 +50,14 @@ export default () => {
   return (
     <main>
       <form onSubmit={submitForm}>
+        
+        {/* Topbar with Progress and FuriganaToggler */}
         <div className="topbar">
           <div className="progress-cont"><div className="progress" style={{ width: `${currentQuestionNum * 100 / answers.length}%` }} /></div>
           <div tabIndex={0} onClick={furiganaToggle}><div className="furigana">あ<span>あ</span></div></div>
         </div>
 
+        {/* Questions */}
         <div className="questions">
           {
             questions.map((question, i) => (
@@ -80,14 +79,18 @@ export default () => {
           }
         </div>
 
-        { currentQuestionNum === answers.length && 
-          <div className="results">
-            <div>{ inputs.reduce((total, current, i) => current === answers[i] ? total + 1 : total, 0) } / { answers.length }</div>
-            <div>{ inputs.reduce((total, current, i) => current === answers[i] ? total + 1 : total, 0) / answers.length * 100 }%</div>
-          </div>
+        {/* Results Screen */}
+        {
+          currentQuestionNum === answers.length && 
+            <div className="results">
+              <div>{ inputs.reduce((total, current, i) => current === answers[i] ? total + 1 : total, 0) } / { answers.length }</div>
+              <div>{ inputs.reduce((total, current, i) => current === answers[i] ? total + 1 : total, 0) / answers.length * 100 }%</div>
+            </div>
         }
 
-        { currentQuestionNum < answers.length ?
+        {/* Navigation Buttons */}
+        {
+          currentQuestionNum < answers.length ?
             <nav className="grid">
               <button type="button" onClick={prevClick} className="btn">Previous</button>
               <button onClick={nextClick} className={ currentQuestionNum + 1 === answers.length ? "btn black" : "btn" }>{ currentQuestionNum + 1 === answers.length ? "See resaults" : "Next" }</button>
