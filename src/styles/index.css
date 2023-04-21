@@ -56,19 +56,16 @@ main form .topbar .progress-cont .progress {
   height: 100%;
   background: #000;
 }
-main form .question {
-  padding-top: 0.5rem;
+main form .questions .question {
+  flex-wrap: wrap;
 }
-main form .question input[type=text] {
+main form .questions .question input[type=text] {
   text-align: center;
   font-size: 1rem;
   border: none;
   border-bottom: 0.0625rem solid #000;
 }
-main form .question input[type=text].l-2 {
-  width: 2rem;
-}
-main form .question input[type=text]:focus {
+main form .questions .question input[type=text]:focus {
   outline: none;
 }
 main form .results {
@@ -87,7 +84,7 @@ main form nav.grid {
 
 .furigana {
   position: relative;
-  display: inline-flex;
+  display: flex;
   flex-flow: column-reverse;
   align-items: center;
 }

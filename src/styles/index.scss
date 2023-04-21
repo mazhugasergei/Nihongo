@@ -39,16 +39,15 @@ main{
       }
     }
 
-    .question{
-      padding-top: .5rem;
-      input[type=text]{
-        text-align: center;
-        font-size: 1rem;
-        border: none;
-        border-bottom: .0625rem solid #000;
-        &.l-2{ width: 2rem; }
-        &:focus{
-          outline: none;
+    .questions{
+      .question{
+        flex-wrap: wrap;
+        input[type=text]{
+          text-align: center;
+          font-size: 1rem;
+          border: none;
+          border-bottom: .0625rem solid #000;
+          &:focus{ outline: none; }
         }
       }
     }
@@ -77,7 +76,7 @@ main{
 
 .furigana{
   position: relative;
-  display: inline-flex;
+  display: flex;
   flex-flow: column-reverse;
   align-items: center;
   span{

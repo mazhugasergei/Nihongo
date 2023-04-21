@@ -6,7 +6,12 @@ import useSettings from "@/store/useSettings"
 export default () => {
   const [currentQuestionNum, setCurrentQuestionNum] = useState(0)
   const maxQuestions = 3
-  const [inputs, setInputs] = useState<string []>([])
+  const [inputs, setInputs] = useState<string[]>([])
+  const questions = [
+    [ ["私", "わたし"], 2, ["松田", "まつだ"], ["樹", "いつき"], "です。" ],
+    [ ["水", "みず"], 2, ["飲", "のみ"], "ます。" ],
+    [ ["彼女", "かのじょ"], 2, ["目", "め"], "は", ["緑色", "みどりいろ"], "です。" ]
+  ]
   const answers = ["は", "を", "の"]
 
   // furigana
@@ -43,7 +48,7 @@ export default () => {
   useEffect(()=>{
     document.querySelectorAll<HTMLParagraphElement>(".question").forEach((question, i) => {
       if(i != currentQuestionNum) question.style.display = "none"
-      else question.style.display = "unset"
+      else question.style.display = "flex"
     })
   }, [currentQuestionNum])
 
@@ -55,26 +60,25 @@ export default () => {
           <button onClick={furiganaToggle}><div className="furigana">あ<span>あ</span></div></button>
         </div>
 
-        <div className="question">
-          <div className="furigana">私<span>わたし</span></div>
-          <input type="text" className="l-2" maxLength={2} data-index={0} onChange={inputChange} />
-          <div className="furigana">松田<span>まつだ</span></div>
-          <div className="furigana">樹<span>いつき</span></div>
-          です。
-        </div>
-        <div className="question">
-          <div className="furigana">水<span>みず</span></div>
-          <input type="text" className="l-2" maxLength={2} data-index={1} onChange={inputChange} />
-          <div className="furigana">飲<span>のみ</span></div>
-          みます。
-        </div>
-        <div className="question">
-          <div className="furigana">彼女<span>かのじょ</span></div>
-          <input type="text" className="l-2" maxLength={2} data-index={2} onChange={inputChange} />
-          <div className="furigana">目<span>め</span></div>
-          は
-          <div className="furigana">緑色<span>みどりいろ</span></div>
-          です。
+        <div className="questions">
+          {
+            questions.map((question, i) => (
+              <div className="question" key={`question_${i}`}>
+                {
+                  question.map((item, j) => {
+                    switch(typeof item){
+                      case "string":
+                        return ( <div key={`item_${j}`}>{ item }</div> )
+                      case "object":
+                        return ( <div className="furigana" key={`item_${j}`}>{ item[0] }<span>{ item[1] }</span></div> )
+                      case "number":
+                        return ( <input type="text" maxLength={item} data-index={i} onChange={inputChange} style={{ width: `${item}rem` }} key={`item_${j}`} /> )
+                    }
+                  })
+                }
+              </div>
+            ))
+          }
         </div>
 
         { currentQuestionNum === maxQuestions && 
