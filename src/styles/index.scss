@@ -68,19 +68,3 @@ main{
     }
   }
 }
-
-
-
-
-.furigana{
-  position: relative;
-  display: flex;
-  flex-flow: column-reverse;
-  align-items: center;
-  span{
-    position: absolute;
-    top: -.5rem;
-    white-space: nowrap;
-    font-size: .5rem;
-  }
-}
