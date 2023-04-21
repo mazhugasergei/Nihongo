@@ -1,12 +1,15 @@
-.btn{
+button, .btn{
   cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.btn{
   user-select: none;
   text-decoration: none;
   display: inline-block;
-  background: none;
   color: $black;
   font-size: .8335rem;
-  border: none;
   box-shadow: inset 0 0 0 0.0625rem $black;
   border-radius: .25rem;
   padding: .5rem 1.5rem;

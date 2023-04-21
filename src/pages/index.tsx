@@ -1,5 +1,7 @@
 // react
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
+// zustand
+import useSettings from "@/store/useSettings"
 
 export default () => {
   const [currentQuestionNum, setCurrentQuestionNum] = useState(0)
@@ -8,14 +10,12 @@ export default () => {
   const answers = ["は", "を", "の"]
 
   // furigana
-  const [furigana, setFurigana] = useState(true)
-  const furiganaSwitch = useRef(null)
-  const furiganaSwitchHandler = (e: any) => {
+  const furiganaState = useSettings(state => state.furigana)
+  const furiganaToggle = useSettings(state => state.furiganaToggle)
+  useEffect(()=>{
     const furiganaCharacters = document.querySelectorAll<HTMLSpanElement>(".furigana span")
-    furiganaCharacters.forEach((item) => {
-      item.style.display = e.target.checked ? "unset" : "none"
-    })
-  }
+    furiganaCharacters.forEach(item => item.style.display = furiganaState ? "unset" : "none")
+  }, [furiganaState])
 
   const inputChange = (e: any) => {
     let tmp = [...inputs]
@@ -51,13 +51,8 @@ export default () => {
     <main>
       <form onSubmit={submitForm}>
         <div className="topbar">
-          <div className="progress-cont">
-            <div className="progress" style={{ width: `${currentQuestionNum * 100 / maxQuestions}%` }} />
-          </div>
-          <div className="controls">
-            <input type="checkbox" id="showHideFurigana" onChange={furiganaSwitchHandler} defaultChecked />
-            <label htmlFor="showHideFurigana"><div className="furigana">あ<span>あ</span></div></label>
-          </div>
+          <div className="progress-cont"><div className="progress" style={{ width: `${currentQuestionNum * 100 / maxQuestions}%` }} /></div>
+          <button onClick={furiganaToggle}><div className="furigana">あ<span>あ</span></div></button>
         </div>
 
         <div className="question">

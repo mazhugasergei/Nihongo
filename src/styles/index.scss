@@ -37,12 +37,6 @@ main{
           background: $black;
         }
       }
-      .controls{
-        input[type=checkbox]{ display: none; }
-        label{
-          cursor: pointer;
-        }
-      }
     }
 
     .question{
