@@ -4,26 +4,35 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 // zustand
 import useSettings from "@/store/useSettings"
+// fetch from file
+import path from "path"
+import fs from "fs"
 
 
 
-export const getServerSideProps = async () => {
-  const questions = [
-    [ ["私", "わたし"], 2, ["松田", "まつだ"], ["樹", "いつき"], "です。" ],
-    [ ["水", "みず"], 2, ["飲", "のみ"], "ます。" ],
-    [ ["彼女", "かのじょ"], 2, ["目", "め"], "は", ["緑色", "みどりいろ"], "です。" ]
-  ]
-  const answers = ["は", "を", "の"]
-  return {
-    props: { questions, answers }
+interface context {
+  params: {
+    id: string
   }
+}
+
+interface ComponentProps {
+  questions: [ [ string[] | number | string ] ]
+  answers: string[]
 }
 
 
 
-interface ComponentProps {
-  questions: [ [ string[], number, string ] ];
-  answers: string[];
+export const getServerSideProps = async (context: context) => {
+  const { id } = context.params
+
+  const filePath = path.join(process.cwd(), `src/api/tests/${id}.json`)
+  const fileContents = fs.readFileSync(filePath, "utf8")
+  const data = JSON.parse(fileContents)
+
+  return {
+    props: data
+  }
 }
 
 
@@ -103,7 +112,7 @@ export default ({ questions, answers }: ComponentProps) => {
           currentQuestionNum === answers.length && 
             <div className="results">
               <div>{ inputs.reduce((total, current, i) => current === answers[i] ? total + 1 : total, 0) } / { answers.length }</div>
-              <div>{ inputs.reduce((total, current, i) => current === answers[i] ? total + 1 : total, 0) / answers.length * 100 }%</div>
+              <div>{ (inputs.reduce((total, current, i) => current === answers[i] ? total + 1 : total, 0) / answers.length * 100).toFixed(2) }%</div>
             </div>
         }
 
