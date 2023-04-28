@@ -1,0 +1,10 @@
+{
+  "questions": [
+    [ "Text", 14, ["Kanji", "furigana"] ],
+    [ "Text", 11, ["Kanji", "furigana"] ]
+  ],
+  "answers": [
+    "correct_answer",
+    "another_one"
+  ]
+}

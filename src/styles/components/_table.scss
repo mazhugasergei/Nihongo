@@ -1,0 +1,17 @@
+.table{
+  border: .0625rem solid $border;
+
+  .tr{
+    display: flex;
+    &:not(:last-child){ border-bottom: .0625rem solid $border; }
+    &.th{
+      font-weight: 500;
+      background: #F7F6F2;
+    }
+
+    .td{
+      padding: .75rem;
+      &:not(:last-child){ border-right: .0625rem solid $border; }
+    }
+  }
+}

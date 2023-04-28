@@ -1,26 +1,24 @@
-import '@/styles/index.css'
 // react
 import { useEffect } from 'react'
 // next
-import type { AppProps } from 'next/app'
+import Link from 'next/link'
 // zustand
 import useSettings from "@/store/useSettings"
-// components
-import Header from '@/components/Header'
 
-export default function App({ Component, pageProps }: AppProps) {
+export default () => {
   // furigana
   const furiganaState = useSettings(state => state.furigana)
   const furiganaToggle = useSettings(state => state.furiganaToggle)
   useEffect(()=>{
     const furiganaCharacters = document.querySelectorAll<HTMLSpanElement>(".furigana span")
     furiganaCharacters.forEach(item => item.style.display = furiganaState ? "unset" : "none")
-  })
+    document.body.style.lineHeight = furiganaState ? "1.8" : "1.5"
+  }, [furiganaState])
 
   return (
-    <>
-      <Header />
-      <Component {...pageProps} />
-    </>
+    <header>
+      <Link href="/">Home</Link>   
+      <button onClick={furiganaToggle} style={{ cursor: "pointer", userSelect: "none" }}><div className="furigana">あ<span>あ</span></div></button>
+    </header>
   )
 }

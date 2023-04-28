@@ -1,0 +1,51 @@
+.test{
+  // border: 1px solid #000; ////
+  max-width: 35rem;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem; ////
+  margin: 0 auto;
+
+  .progress-cont{
+    height: .0625rem;
+    width: 100%;
+    background: lighten($black, 80);
+    .progress{
+      height: 100%;
+      background: $black;
+    }
+  }
+
+  .questions{
+    .question{
+      flex-wrap: wrap;
+      input[type=text]{
+        text-align: center;
+        color: $text;
+        font-size: 1rem;
+        border: none;
+        border-bottom: .0625rem solid $text;
+        &:focus{ outline: none; }
+      }
+    }
+  }
+
+  .results{
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+    gap: .25rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  nav{
+    &.grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .75rem;
+    }
+  }
+}

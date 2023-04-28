@@ -2,8 +2,6 @@
 import { useEffect, useState } from "react"
 // next
 import Link from "next/link"
-// zustand
-import useSettings from "@/store/useSettings"
 // fetch from file
 import path from "path"
 import fs from "fs"
@@ -41,14 +39,6 @@ export default ({ questions, answers }: ComponentProps) => {
   const [currentQuestionNum, setCurrentQuestionNum] = useState(0)
   const [inputs, setInputs] = useState<string[]>([])
 
-  // furigana
-  const furiganaState = useSettings(state => state.furigana)
-  const furiganaToggle = useSettings(state => state.furiganaToggle)
-  useEffect(()=>{
-    const furiganaCharacters = document.querySelectorAll<HTMLSpanElement>(".furigana span")
-    furiganaCharacters.forEach(item => item.style.display = furiganaState ? "unset" : "none")
-  }, [furiganaState])
-
   const inputChange = (e: any) => {
     let tmp = [...inputs]
     tmp[e.target.dataset.index] = e.target.value
@@ -77,13 +67,10 @@ export default ({ questions, answers }: ComponentProps) => {
 
   return (
     <main>
-      <form onSubmit={submitForm}>
+      <form className="test" onSubmit={submitForm}>
 
-        {/* Topbar with Progress and FuriganaToggler */}
-        <div className="topbar">
-          <div className="progress-cont"><div className="progress" style={{ width: `${currentQuestionNum * 100 / answers.length}%` }} /></div>
-          <div tabIndex={0} onClick={furiganaToggle} style={{ cursor: "pointer", userSelect: "none" }}><div className="furigana">あ<span>あ</span></div></div>
-        </div>
+        {/* Progress bar */}
+        <div className="progress-cont"><div className="progress" style={{ width: `${currentQuestionNum * 100 / answers.length}%` }} /></div>
 
         {/* Questions */}
         <div className="questions">

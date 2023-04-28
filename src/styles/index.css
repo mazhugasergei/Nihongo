@@ -5,6 +5,10 @@
 }
 
 body {
+  padding: 0 2rem;
+}
+
+body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: #000;
 }
@@ -12,6 +16,23 @@ body {
 a {
   text-decoration: none;
   color: #000;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.furigana {
+  position: relative;
+  display: inline-flex;
+  flex-flow: column-reverse;
+  align-items: center;
+}
+.furigana span {
+  position: absolute;
+  top: -0.5rem;
+  white-space: nowrap;
+  font-size: 0.5rem;
+  line-height: 2 !important;
 }
 
 button, .btn {
@@ -36,7 +57,13 @@ button, .btn {
   color: #fff;
 }
 
-main form {
+header {
+  border-bottom: 0.0625rem solid #E9E9E7;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+
+.test {
   max-width: 35rem;
   display: flex;
   flex-flow: column;
@@ -45,36 +72,29 @@ main form {
   padding: 1rem;
   margin: 0 auto;
 }
-main form .topbar {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-main form .topbar .progress-cont {
+.test .progress-cont {
   height: 0.0625rem;
   width: 100%;
   background: #cccccc;
 }
-main form .topbar .progress-cont .progress {
+.test .progress-cont .progress {
   height: 100%;
   background: #000;
 }
-main form .questions .question {
+.test .questions .question {
   flex-wrap: wrap;
 }
-main form .questions .question input[type=text] {
+.test .questions .question input[type=text] {
   text-align: center;
   color: #000;
   font-size: 1rem;
   border: none;
   border-bottom: 0.0625rem solid #000;
 }
-main form .questions .question input[type=text]:focus {
+.test .questions .question input[type=text]:focus {
   outline: none;
 }
-main form .results {
+.test .results {
   text-align: center;
   display: flex;
   flex-flow: column;
@@ -82,21 +102,28 @@ main form .results {
   font-size: 1.25rem;
   font-weight: 500;
 }
-main form nav.grid {
+.test nav.grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.75rem;
 }
 
-.furigana {
-  position: relative;
-  display: flex;
-  flex-flow: column-reverse;
-  align-items: center;
+.table {
+  border: 0.0625rem solid #E9E9E7;
 }
-.furigana span {
-  position: absolute;
-  top: -0.5rem;
-  white-space: nowrap;
-  font-size: 0.5rem;
+.table .tr {
+  display: flex;
+}
+.table .tr:not(:last-child) {
+  border-bottom: 0.0625rem solid #E9E9E7;
+}
+.table .tr.th {
+  font-weight: 500;
+  background: #F7F6F2;
+}
+.table .tr .td {
+  padding: 0.75rem;
+}
+.table .tr .td:not(:last-child) {
+  border-right: 0.0625rem solid #E9E9E7;
 }/*# sourceMappingURL=index.css.map */
