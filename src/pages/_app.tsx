@@ -1,4 +1,4 @@
-import '@/styles/index.css'
+import '@/assets/styles/index.css'
 // react
 import { useEffect } from 'react'
 // next
