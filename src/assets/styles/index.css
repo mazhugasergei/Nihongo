@@ -111,23 +111,19 @@ header {
 }
 
 .table {
-  max-width: 50rem;
-  border: 0.0625rem solid #E9E9E7;
-  margin: 0 auto;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-grid;
+  border-top: 0.0625rem solid #E9E9E7;
+  border-left: 0.0625rem solid #E9E9E7;
 }
-.table .tr {
-  display: flex;
-}
-.table .tr:not(:last-child) {
+.table .td {
+  padding: 0.75rem;
   border-bottom: 0.0625rem solid #E9E9E7;
+  border-right: 0.0625rem solid #E9E9E7;
 }
-.table .tr.th {
+.table .td.th {
   font-weight: 500;
   background: #F7F6F2;
-}
-.table .tr .td {
-  padding: 0.75rem;
-}
-.table .tr .td:not(:last-child) {
-  border-right: 0.0625rem solid #E9E9E7;
 }/*# sourceMappingURL=index.css.map */

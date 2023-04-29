@@ -48,12 +48,13 @@ export default ({ rows }: data) => {
           let maxWidth = 0
           // for each row
           table.querySelectorAll(".tr").forEach(row => {
-            const tdWidth = row.querySelectorAll<HTMLElement>(".td")[col].offsetWidth
             // get max width
+            const tdWidth = row.querySelectorAll<HTMLElement>(".td")[col].offsetWidth
             if(tdWidth > maxWidth) maxWidth = tdWidth
           })
           table.querySelectorAll(".tr").forEach(row => {
             row.querySelectorAll<HTMLElement>(".td")[col].style.width = `${maxWidth+1}px`
+            row.querySelectorAll<HTMLElement>(".td")[col].style.flexShrink = "0"
           })
         }
       }
@@ -63,30 +64,26 @@ export default ({ rows }: data) => {
 
   return (
     <main>
-      <div className="table">
+      <div className="table" style={{ gridTemplateColumns: `repeat(${rows[rows.length-1].length}, minmax(min-content, max-content))` }}>
         {
           rows.map((tr, i) => (
-            <div className={ typeof tr[0] === "number" ? "tr th" : "tr" } key={i}>
-              {
-                tr.map((td, j) => {
-                  if(typeof td === "number") return
-                  else return (
-                    <div className="td" key={j}>
-                      {
-                        td.map((item, k) => {
-                          switch(typeof item){
-                            case "string":
-                              if(item === "\n") return ( <br key={k} /> )
-                              else return item
-                            case "object": return ( <div className="furigana" key={k}>{ item[0] }<span>{ item[1] }</span></div> )
-                          }
-                        })
+            tr.map((td, j) => {
+              if(typeof td === "number") return
+              else return (
+                <div className={typeof tr[0] === "number" ? "td th" : "td"} key={j}>
+                  {
+                    td.map((item, k) => {
+                      switch(typeof item){
+                        case "string":
+                          if(item === "\n") return ( <br key={k} /> )
+                          else return item
+                        case "object": return ( <div className="furigana" key={k}>{ item[0] }<span>{ item[1] }</span></div> )
                       }
-                    </div>
-                  )
-                })
-              }
-            </div>
+                    })
+                  }
+                </div>
+              )
+            })
           ))
         }
       </div>
