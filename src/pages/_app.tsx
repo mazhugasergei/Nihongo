@@ -3,6 +3,7 @@ import '@/assets/styles/index.css'
 import { useEffect } from 'react'
 // next
 import type { AppProps } from 'next/app'
+import { Analytics } from '@vercel/analytics/react'
 // zustand
 import useSettings from "@/store/useSettings"
 // components
@@ -21,6 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Header />
       <Component {...pageProps} />
+      <Analytics />
     </>
   )
 }
