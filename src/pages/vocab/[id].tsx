@@ -39,29 +39,6 @@ export const getServerSideProps = async (context: context) => {
 
 
 export default ({ rows }: data) => {
-  useEffect(()=>{
-    document.querySelectorAll(".table").forEach(table => {
-      const itemsInRow = table.querySelector(".tr")?.childElementCount
-      if(itemsInRow){
-        // for each column
-        for(let col=0; col<itemsInRow-1; col++){
-          let maxWidth = 0
-          // for each row
-          table.querySelectorAll(".tr").forEach(row => {
-            // get max width
-            const tdWidth = row.querySelectorAll<HTMLElement>(".td")[col].offsetWidth
-            if(tdWidth > maxWidth) maxWidth = tdWidth
-          })
-          table.querySelectorAll(".tr").forEach(row => {
-            row.querySelectorAll<HTMLElement>(".td")[col].style.width = `${maxWidth+1}px`
-            row.querySelectorAll<HTMLElement>(".td")[col].style.flexShrink = "0"
-          })
-        }
-      }
-    })
-  }, [])
-  
-
   return (
     <main>
       <div className="table" style={{ gridTemplateColumns: `repeat(${rows[rows.length-1].length}, minmax(min-content, max-content))` }}>
