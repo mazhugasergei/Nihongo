@@ -1,7 +1,16 @@
 header{
   display: flex;
-  gap: 1rem;
+  justify-content: space-between;
   border-bottom: .0625rem solid $border;
   padding: 1rem 0;
   margin-bottom: 2rem; ////
+
+  .logo{
+    font-weight: 700;
+  }
+
+  nav{
+    display: flex;
+    gap: 1rem;
+  }
 }

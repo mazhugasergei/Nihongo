@@ -59,10 +59,17 @@ button, .btn {
 
 header {
   display: flex;
-  gap: 1rem;
+  justify-content: space-between;
   border-bottom: 0.0625rem solid #E9E9E7;
   padding: 1rem 0;
   margin-bottom: 2rem;
+}
+header .logo {
+  font-weight: 700;
+}
+header nav {
+  display: flex;
+  gap: 1rem;
 }
 
 .test {

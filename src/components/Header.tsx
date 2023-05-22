@@ -26,8 +26,11 @@ export default () => {
 
   return (
     <header>
-      <Link href="/">Home</Link>
-      <div ref={furiganaToggleButton} onClick={furiganaToggle} onKeyDown={hnadleFuriganaToggle} tabIndex={0} style={{ cursor: "pointer", userSelect: "none" }}><div className="furigana">あ<span>あ</span></div></div>
+      <a href="/" className="logo">LOGO</a>
+      <nav>
+        <Link href="/">Home</Link>
+        <div ref={furiganaToggleButton} onClick={furiganaToggle} onKeyDown={hnadleFuriganaToggle} tabIndex={0} style={{ cursor: "pointer", userSelect: "none" }}><div className="furigana">あ<span>あ</span></div></div>
+      </nav>
     </header>
   )
 }
